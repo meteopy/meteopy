@@ -3,7 +3,8 @@
 #	Meteopy-project                                                              #
 #	Licencia: CreativeCommons (Reconocimiento – NoComercial – CompartirIgual)    #
 #	+ INFO= https://github.com/meteopy/meteopy                                   #
-#	Contact= @coverantwarrior						     #
+#	Contacto desarrollador = @coverantwarrior				     #		     #
+#	Twitter oficial del proyecto = @meteopy                                      #
 #										     #	
 ######################################################################################
 
