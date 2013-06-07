@@ -10,13 +10,13 @@
 #include <Wire.h>
 #include <Adafruit_BMP085.h>
 
-int LDR_Pin = A10;
+int LDR_Pin = A2;
 
 Adafruit_BMP085 bmp;
 
 void setup() {
   Serial.begin(9600); 
- 
+  int LDR = 0;
   bmp.begin();
 }
 
@@ -24,7 +24,6 @@ void loop() {
   float LDR = analogRead(LDR_Pin);
   float t2 = bmp.readTemperature();
   float p = bmp.readPressure();
-
     Serial.print("* "); 
     Serial.print(t2);
     Serial.print(" ");

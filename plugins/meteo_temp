@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+
+import os
+from munin import MuninPlugin
+import mysql.connector
+
+
+conn = mysql.connector.Connect(host='localhost',user='root',\
+                        password='smx',database='meteopy')
+
+
+class LoadAVGPlugin(MuninPlugin):
+    title = "Temperatura"
+    args = ""
+#    args = "--base 1000"
+    vlabel = "temperatura"
+    category = "meteopy"
+
+    @property
+
+    def fields(self):
+        warning = os.environ.get('load_warn', 0)
+        critical = os.environ.get('load_crit', 100)
+        return [("temperatura", dict(
+                label = "temperatura",
+                info = 'Temperatura recollida per el sensor.',
+                type = "GAUGE",
+                min = "0",
+                warning = str(warning),
+                critical = str(critical)))]
+
+    def execute(self):
+        c = conn.cursor()
+
+	conn.commit()
+
+	c.execute ("""SELECT temp FROM `temperatura` WHERE ID= 1""")
+
+	for row in c:
+        	resultat=(row)
+	final=str(resultat)[1:-2]
+
+
+        return dict(temperatura=final)
+
+if __name__ == "__main__":
+    LoadAVGPlugin().run()
